@@ -23,24 +23,6 @@ exports.createSauce = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-// update
-// exports.modifySauce = (req, res, next) => {
-//   const sauceObject = req.file
-//     ? {
-//         ...JSON.parse(req.body.sauce),
-//         imageUrl: `${req.protocol}://${req.get("host")}/images/${
-//           req.file.filename
-//         }`,
-//       }
-//     : { ...req.body };
-//   Sauces.updateOne(
-//     { _id: req.params.id },
-//     { ...sauceObject, _id: req.params.id }
-//   )
-//     .then(() => res.status(200).json({ message: "Sauce modifié !" }))
-//     .catch((error) => res.status(400).json({ error }));
-// };
-
 // update product
 exports.modifySauce = (req, res, next) => {
   Sauces.findOne({ _id: req.params.id })
