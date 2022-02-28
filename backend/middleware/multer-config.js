@@ -6,6 +6,7 @@ const MIME_TYPES = {
   "image/png": "png",
 };
 
+// Create settings object for multer
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, "images");
@@ -15,6 +16,8 @@ const storage = multer.diskStorage({
     const extension = MIME_TYPES[file.mimetype];
     callback(null, name + Date.now() + "." + extension);
   },
+  // Create image's names
 });
 
+// Adding multer object / single = ONE file not many
 module.exports = multer({ storage: storage }).single("image");

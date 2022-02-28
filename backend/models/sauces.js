@@ -1,5 +1,7 @@
+// Requirements
 const mongoose = require("mongoose");
 
+// Create sauceSchema
 const sauceSchema = mongoose.Schema({
   userId: { type: String, required: true },
   name: { type: String, required: true },
@@ -14,4 +16,5 @@ const sauceSchema = mongoose.Schema({
   usersDisliked: { type: [String] },
 });
 
+// Export sauceSchema
 module.exports = mongoose.model("Sauces", sauceSchema);
