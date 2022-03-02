@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config({ path: process.cwd() + "/.env" });
 
 module.exports = (req, res, next) => {
   try {
@@ -6,7 +7,7 @@ module.exports = (req, res, next) => {
       req.headers.authorization.split(" ")[1]; /* Finding the token */
     const decodedToken = jwt.verify(
       token,
-      "RANDOM_TOKEN_SECRET"
+      process.env.TOKEN
     ); /* checking if matching with the key*/
     const userId = decodedToken.userId;
     req.auth = { userId };
